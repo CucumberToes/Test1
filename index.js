@@ -1,9 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
 
+app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
@@ -13,7 +15,6 @@ app.get('/', (req, res) => {
 app.post('/submit-email', (req, res) => {
     const email = req.body.email;
     console.log('Received email:', email);
-    // You can add code here to save the email to a database or perform other actions
     res.json({ message: 'Email received successfully' });
 });
 
